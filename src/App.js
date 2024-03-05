@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import EmployeeList from './Components/Employeelist';
+import EmployeeForm from './Components/EmployeeForm';
+import Home from './Pages/Home';
+import EmployeeEditForm from './Components/EmployeeEditForm';
+import Footer from './Components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+
+      <div className="flex-grow">
+        {/* Your main content */}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/employeeform' element={<EmployeeForm />} />
+          <Route path='/employeelist' element={<EmployeeList />} />
+          <Route path='/employeeEdit' element={<EmployeeEditForm />} />
+        </Routes>
+      </div>
+      
+      <Footer/>
     </div>
   );
 }
