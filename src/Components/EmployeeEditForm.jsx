@@ -25,10 +25,10 @@ const EmployeeEditForm = ({ employee, onSave, onCancel }) => {
 
   return (
     
-    <div className="flex justify-center min-w-10  mb-7">
+    <div className="flex justify-center min-w-10  mb-20">
        
       <form onSubmit={handleSubmit}>
-        <h2 className='font-bold text-2xl pl-28 mt-10 mb-10'>Edit Employee</h2>
+        <h2 className='font-bold text-2xl pl-28 mt-[-3rem] mb-10'>Edit Employee</h2>
         <div className="mb-4 ">
           <label className="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
           <input

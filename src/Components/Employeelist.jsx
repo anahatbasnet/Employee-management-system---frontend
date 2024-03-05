@@ -62,7 +62,7 @@ const EmployeeList = () => {
     <div>
      
       <h2 className='text-2xl text-center mt-5'>Employee List</h2>
-      <table className='mx-auto mt-5'>
+      <table className='mx-auto mt-5 mb-20'>
         <thead>
           <tr>
             <th className='border px-4 py-2'>
