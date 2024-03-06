@@ -11,7 +11,7 @@ const EmployeeEditForm = ({ employee, onSave, onCancel }) => {
   });
 
   const isEmailValid = (email) => {
-    // Basic email format validation using a regular expression
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -27,7 +27,7 @@ const EmployeeEditForm = ({ employee, onSave, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate email format before saving
+    
     if (!isEmailValid(editedEmployee.email)) {
       alert('Please enter a valid email address');
       return;
