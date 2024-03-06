@@ -13,7 +13,7 @@ function App() {
       <Navbar />
 
       <div className="flex-grow">
-        {/* Your main content */}
+        
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/employeeform' element={<EmployeeForm />} />

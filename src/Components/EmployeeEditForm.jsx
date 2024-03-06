@@ -10,6 +10,12 @@ const EmployeeEditForm = ({ employee, onSave, onCancel }) => {
     email: employee?.email || '',
   });
 
+  const isEmailValid = (email) => {
+    // Basic email format validation using a regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedEmployee((prevEmployee) => ({
@@ -20,16 +26,21 @@ const EmployeeEditForm = ({ employee, onSave, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate email format before saving
+    if (!isEmailValid(editedEmployee.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
     onSave(editedEmployee);
   };
 
   return (
-    
-    <div className="flex justify-center min-w-10  mb-20">
-       
+    <div className="flex justify-center min-w-10 mb-20">
       <form onSubmit={handleSubmit}>
         <h2 className='font-bold text-2xl pl-28 mt-[-3rem] mb-10'>Edit Employee</h2>
-        <div className="mb-4 ">
+        <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
           <input
             className="w-full md:w-96 px-3 py-2 border rounded-md"

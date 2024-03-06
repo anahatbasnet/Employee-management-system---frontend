@@ -9,13 +9,21 @@ const EmployeeList = () => {
   const [editedEmployee, setEditedEmployee] = useState(null);
   const navigate = useNavigate();
 
-
   const handleEdit = (employee) => {
     setEditedEmployee(employee);
+  
+    
+    setTimeout(() => {
+      
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 0);
   };
 
   const handleAddNew = () => {
-    setEditedEmployee({}); // Set editedEmployee as an empty object for a new employee
+    setEditedEmployee({}); 
   };
 
   useEffect(() => {

@@ -1,25 +1,38 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeForm = () => {
   const [employee, setEmployee] = useState({ firstName: '', lastName: '', email: '' });
+  const navigate = useNavigate();
+
+  const isEmailValid = (email) => {
+    // Basic email format validation using a regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate email format before making the API call
+    if (!isEmailValid(employee.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
     try {
       await axios.post('http://localhost:8080/api/employees', employee);
-     
-      alert('Employee added Successfully')
+      alert('Employee added Successfully');
+      navigate('/employeelist');
     } catch (error) {
       console.error('Error adding employee:', error);
-      alert('Employee add failed')
+      alert('Employee add failed');
     }
   };
 
   return (
     <div>
-      
       <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md mt-10">
         <h2 className="text-2xl font-semibold mb-4">Add Employee</h2>
         <form onSubmit={handleSubmit}>
